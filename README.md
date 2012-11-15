@@ -60,18 +60,12 @@ define("<TITLE_OPTION>", "<VALUE>");
 </tr>
 <tr>
 <td><b>SECURITY_MODULE</td>
-<td>Several options are available to you to protect access to the page to other users. You can use the following types:
-
-<code>no-security</code> does not secure page and leave free access to the manager (not recommended)
-
-<code>simple-security</code> secures the access manager with a parameter and a password in the URL (insecure)
-
-<code>phpbb-standalone</code> module is to be used with CMS phpBB
-
-<code>phpbb-embedded</code> is the equivalent of the module below to phpBB
-
-<code>login-form</code> is a module that provides the ability to enter credentials via a form (very secure)
-
+<td>Several options are available to you to protect access to the page to other users. You can use the following types:<br /><br />
+<b><code>no-security</code></b> does not secure page and leave free access to the manager (<em>not recommended</em>)<br />
+<b><code>simple-security</code></b> secures the access manager with a parameter and a password in the URL (<em>insecure</em>)<br />
+<b><code>phpbb-standalone</code></b> module is to be used with CMS phpBB<br />
+<b><code>phpbb-embedded</code></b> is the equivalent of the module below to phpBB<br />
+<b><code>login-form</code></b> is a module that provides the ability to enter credentials via a form (<em>very secure</em>)<br /><br />
 IDs are configurable through parameters below.</td>
 </tr>
 <tr>
