@@ -9,17 +9,17 @@
 #####################################################
 #	Page:
 
-require( "wipeX_config.php" );
+require( "includes/pexgui.config.php" );
 
 $groups_ary = loadGroups( $mcConn );
 
 wipeX_header();
 ?>
 <!-- WIPEX by NINJ4. For more information, visit SoftSlayer.com -->
-<link rel="stylesheet" type="text/css" href="wipex.css" />
+<link rel="stylesheet" type="text/css" href="images/stylesheet.css" />
 <div class="wipex-panel">
 	<script type="text/javascript" src="lib/jquery.js"></script>
-	<script type="text/javascript" src="wipex.js"></script>
+	<script type="text/javascript" src="lib/fonctions.js"></script>
 	<div class="finishedOps">
 		<div class="inner"><span class="corners-top"><span></span></span>
 			<p class="finishedOps" id="OpsTitle"><h2 id="OpsTitle">Operations Pending:</h2></p>
@@ -67,7 +67,7 @@ wipeX_header();
 			</thead>
 			<tr class="selectors">
 				<td>
-					<select id="column1" name="GroupsList" multiple="multiple">
+					<select id="column1" name="GroupsList" multiple="multiple" size="20">
 						<?php
 								foreach ( $groups_ary as $group_ary ) {
 									echo "<option class='group' value='". $group_ary['name'] ."'"
@@ -78,10 +78,10 @@ wipeX_header();
 					</select>
 				</td>
 				<td>
-					<select id="column2" name="DataList" multiple="multiple"></select>
+					<select id="column2" name="DataList" multiple="multiple" size="20"></select>
 				</td>
 				<td>
-					<select id="column3" name="DataList" multiple="multiple"></select>
+					<select id="column3" name="DataList" multiple="multiple" size="20"></select>
 				</td>
 			</tr>
 			<tr>

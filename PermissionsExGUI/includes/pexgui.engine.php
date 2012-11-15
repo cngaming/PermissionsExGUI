@@ -7,7 +7,7 @@
 #		Last Edited: 
 #####################################################
 # INIT
-require( "wipeX_config.php" );
+require( "pexgui.config.php" );
 //echo $_SERVER['REQUEST_URI'];
 #if ( !isset( $_GET["data"] ) ) 
 #	die();
