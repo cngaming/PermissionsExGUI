@@ -1,8 +1,6 @@
 PermissionsExGUI
 ======
 
-
-
 **PermissionsExGUI** (<em>v1.0</em>) is a remastered version of **[wipeX](http://github.com/NINJ4/wipeX)**, a script code of [@NINJ4](https://github.com/NINJ4) on **Github**. This version offers more options for its users.
 
 Features have been added to version **PermissionsExGUI** to offer additional options and useful as _RCON_ option that allows you to refresh permissions into play when adding valid permissions from the web interface but also a form simple connection to avoid using a URL parameter to connect to.
