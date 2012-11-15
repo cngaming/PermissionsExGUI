@@ -11,7 +11,7 @@ $(document).ready(function(){
 			var execCommand = OpsPending[ opNum ];
 		else
 			var execCommand = newCommand;
-		$.get("../includes/pexgui.engine.php" + execCommand + "&queryNum=" + opNum, function(result){
+		$.get("includes/pexgui.engine.php" + execCommand + "&queryNum=" + opNum, function(result){
 			var splitStr = String(result).split(',');
 			var isSuccess = splitStr[0];
 			var replaceNum = splitStr[1];
@@ -64,13 +64,13 @@ $(document).ready(function(){
 			}
 			error = false;
 			submitted = false;
-			$.get("../includes/pexgui.engine.php?data=groups", function(result){
+			$.get("includes/pexgui.engine.php?data=groups", function(result){
 			  $("#column1").html(result);
 			});
-			$.get("../includes/pexgui.engine.php?data=permissions&group=" + $("#column1").val(), function(result){
+			$.get("includes/pexgui.engine.php?data=permissions&group=" + $("#column1").val(), function(result){
 			  $("#column2").html(result);
 			});
-			$.get("../includes/pexgui.engine.php?data=members&group=" + $("#column1").val(), function(result){
+			$.get("includes/pexgui.engine.php?data=members&group=" + $("#column1").val(), function(result){
 			  $("#column3").html(result);
 			});
 		}
@@ -79,19 +79,19 @@ $(document).ready(function(){
 	//Expanded Overlay
 	$(".expand").click(function(){
 		if ( String($(this).attr("class")).indexOf("col1") != -1 ) {
-			//$.get("../includes/pexgui.engine.php?data=permissions&group=" + $("#column1").val(), function(result){
+			//$.get("includes/pexgui.engine.php?data=permissions&group=" + $("#column1").val(), function(result){
 			  $("#colExpanded").html("<option value='-1'>Feature not implemented yet.</option>");
 			//});
 		}
 		if ( String($(this).attr("class")).indexOf("col2") != -1 ) {
 			$("#expanded-title").text("Complete Permissions for " + $("#column1").val());
-			$.get("../includes/pexgui.engine.php?data=permissions&inherited=true&group=" + $("#column1").val(), function(result){
+			$.get("includes/pexgui.engine.php?data=permissions&inherited=true&group=" + $("#column1").val(), function(result){
 				$("#colExpanded").html(result);
 			});
 		}
 		if ( String($(this).attr("class")).indexOf("col3") != -1 ) {
 			$("#expanded-title").text("Members of " + $("#column1").val());
-			$.get("../includes/pexgui.engine.php?data=members&group=" + $("#column1").val(), function(result){
+			$.get("includes/pexgui.engine.php?data=members&group=" + $("#column1").val(), function(result){
 			  $("#colExpanded").html(result);
 			});
 		}
@@ -289,7 +289,7 @@ $(document).ready(function(){
 		$(this).text(newText + " the history of actions");
 		
 		if ( newText == "Show" ) {
-			$.get("../includes/pexgui.engine.php?data=groups", function(result){
+			$.get("includes/pexgui.engine.php?data=groups", function(result){
 			  $("#column1").html(result);
 			  $("#column2").html("");
 			  $("#column3").html("");
@@ -298,7 +298,7 @@ $(document).ready(function(){
 		$("div.logLoader").click();
 	});
 	$("div.logLoader").click(function(){
-		$.get("../includes/pexgui.engine.php?data=getlogs&start=" + logLim , function(result){
+		$.get("includes/pexgui.engine.php?data=getlogs&start=" + logLim , function(result){
 			var append = "";
 			if ( logLim != 0 )
 				append = $(".logs-rows").html();
@@ -322,11 +322,11 @@ $(document).ready(function(){
 	$(".permsConfig").slideUp("slow");
 	$(".memberConfig").slideUp("slow");
 	$(".expand.col3,.expand.col2").fadeIn("slow");
-	$.get("../includes/pexgui.engine.php?data=permissions&group=" + $(this).val(), function(result){
+	$.get("includes/pexgui.engine.php?data=permissions&group=" + $(this).val(), function(result){
 	  $("#column2").html(result);
 	  //$("#pHead").html("");
 	});
-	$.get("../includes/pexgui.engine.php?data=members&group=" + $(this).val(), function(result){
+	$.get("includes/pexgui.engine.php?data=members&group=" + $(this).val(), function(result){
 	  $("#column3").html(result);
 	  //$("#mHead").html("");
 	});

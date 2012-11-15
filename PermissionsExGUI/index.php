@@ -1,19 +1,33 @@
 <?php
-#####################################################
-#	A well featured PEX web interface.
-#
-#		Author: NINJ4
-#		Version: Beta 0.5
-#		Created 12/20
-#		Last Edited: 
-#####################################################
-#	Page:
 
-require( "includes/pexgui.config.php" );
+#####################################################
+# PermissionsExGui CraftBukkit plugin
+#
+# Author: NINJ4
+# Contributor: Pirmax
+# Version: 1.0
+# Help: http://pirmax.github.com/PermissionsExGUI/
+#####################################################
+
+require("includes/pexgui.config.php");
+
+require("security-modules/". SECURITY_MODULE .".php");  //security!
+if(!wipex_check_security())
+{
+	die("Security Error.");
+}
+
+if(isset($_GET['logout']) AND !empty($_SESSION['loginin']))
+{
+	unset($_SESSION['loginin']);
+	header("Location: index.php");
+	exit;
+}
 
 $groups_ary = loadGroups( $mcConn );
 
 wipeX_header();
+
 ?>
 <!-- WIPEX by NINJ4. For more information, visit SoftSlayer.com -->
 <link rel="stylesheet" type="text/css" href="images/stylesheet.css" />
@@ -29,8 +43,12 @@ wipeX_header();
 		<span class="corners-bottom"><span></span></span></div>
 	</div>
 	<div class="wipex-topbar" align="center">
-	<h2>Web-Interface for PEX</h2>
-	<table><tr><td><div align="left"><span style="font-size:75%;color:white;">wipeX Beta Version 0.5 by NINJ4 @ <a href="softslayer.com">SoftSlayer.com</a></span></div></td><td><div align="right"><a href="javascript:void(0)" id="showLogs" class="action loadLogs">Show wipeX Logs</a></div></td></tr></table>
+	<div style="width: 100%; height: 80px; text-align: left; font-family: calibri;">
+	<div style="float: right; width: 250px; text-align: right;"><a href="javascript:void(0)" id="showLogs" class="action loadLogs">Show the history of actions</a><?php if(SECURITY_MODULE == 'login-form') { ?><br /><a href="index.php?logout" id="logOut" class="action logOut">Logout manager</a><?php } ?></div>
+	<h1 style="margin: 0; padding: 0;">PermissionsExGui</h1>
+	<h4 style="margin: 0; padding: 0; display:">Graphical User Interface for CraftBukkit plugin PermissionsEx</h4>
+	<h4 style="margin: 0; padding: 0;"><span style="font-size: 80%; color: #FFFFFF;">Previously &#171; wipeX &#187; (produced by NINJ4) &amp; Rebuilt by <a href="http://twitter.com/pirmax" target="_blank" style="text-decoration: underline; color: #FFFFFF;">Pirmax</a></span></h4>
+	</div>
 	<div class="wipex-container hidden" id="Show">
 		<form id="">
 			<table class="wipex-logs" cellspacing="0px">
@@ -86,7 +104,7 @@ wipeX_header();
 			</tr>
 			<tr>
 				<td class="wipex-info" id="col1Config">
-					<div align="right" class="tdlink"><a href="javascript:void(0)" class="expand col1">expand view</a></div>
+					<div align="right" class="tdlink"><a href="javascript:void(0)" class="expand col1">&#171; Expand view &#187;</a></div>
 					<div class="grpConfig slidePanel">Select the function to apply to the following groups:
 						<b><div id="selectedGroups">
 						</div></b>
@@ -95,7 +113,7 @@ wipeX_header();
 					<a href="javascript:void(0)" id="newGrp" class="action Ask col1">Create New Group</a>
 				</td>
 				<td class="wipex-info" id="col2Config">
-					<div align="right" class="tdlink"><a href="javascript:void(0)" class="expand col2 hidden">expand view</a></div>
+					<div align="right" class="tdlink"><a href="javascript:void(0)" class="expand col2 hidden">&#171; Expand view &#187;</a></div>
 					<div class="permsConfig slidePanel">Select the function to apply to the following nodes:
 						<b><div id="selectedPerms">
 						</div></b>
@@ -109,7 +127,7 @@ wipeX_header();
 					</div>
 				</td>
 				<td class="wipex-info" id="col3Config">
-					<div align="right" class="tdlink"><a href="javascript:void(0)" class="expand col3 hidden">expand view</a></div>
+					<div align="right" class="tdlink"><a href="javascript:void(0)" class="expand col3 hidden">&#171; Expand view &#187;</a></div>
 					<div class="memberConfig slidePanel">Select the function to apply to the following members:
 						<b><div id="selectedMembers">
 						</div></b>
@@ -138,8 +156,14 @@ wipeX_header();
 				<p id="expandConfig"></p><br /><a href="javascript:void(0)" class="cancelOverlay action">Close Window</a>
 		</div>
 	</div>
+
+	<div style="float: right; margin: 0; padding: 0; font-size: 75%; color: #333333;">Your version: 1.0 | Last version: <iframe src="http://pirmax.github.com/PermissionsExGUI/version.html" frameborder="0" border="0" width="30px" height="11px"></iframe></div>
+	
+	<span style="font-size: 75%; color: #333333; margin-left: 20px;">&copy 2012 PermissionsExGui - <a href="http://pirmax.github.com/PermissionsExGUI/" target="_blank">PermissionsExGUI on Github</a></span>
+
 </div>
 <?php
-wipeX_footer();
-?>
 
+wipeX_footer();
+
+?>

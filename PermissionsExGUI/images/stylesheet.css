@@ -1,7 +1,7 @@
 div.wipex-panel {
 	font-size: 100%;
 	padding: 0;
-	margin: 15;
+	margin: 15px auto;
 }
 h2 {
 	padding: 3px;
@@ -11,7 +11,7 @@ div {
 	margin:10px;
 }
 .selectors select {
-	width:90%;
+	width:100%;
 	height:100%;
 	vertical-align: bottom;
 }
@@ -100,6 +100,7 @@ div.wipex-topbar {
 	background-color: #536482;
 	color: #ffffff;
 	margin-top: 10px;
+	padding: 10px;
 }
 div.wipex-container {
 	background-color: #a2a2a2;

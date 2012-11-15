@@ -1,13 +1,25 @@
 <?php
+
 #####################################################
-#	Ajax will load shit from here...
+# PermissionsExGui CraftBukkit plugin
 #
-#		Author: NINJ4
-#		Created 12/20
-#		Last Edited: 
+# Author: NINJ4
+# Contributor: Pirmax
+# Version: 1.0
+# Help: http://pirmax.github.com/PermissionsExGUI/
 #####################################################
+
 # INIT
-require( "pexgui.config.php" );
+
+require("pexgui.config.php");
+require_once("MinecraftRcon.class.php");
+
+require("../security-modules/". SECURITY_MODULE .".php");  //security!
+if(!wipex_check_security())
+{
+	die("Security Error.");
+}
+
 //echo $_SERVER['REQUEST_URI'];
 #if ( !isset( $_GET["data"] ) ) 
 #	die();
@@ -20,6 +32,7 @@ function wipeX_Log( $logString, $mcConn ) {
 					( `user`, `action` )
 			VALUES	( '". $GLOBALS['wipeX_User'] ."' , '". $logString ."' )";
 	mysql_query( $sql, $mcConn );
+	rconCommand('pex reload');
 }
 
 //changes the undo status of $undoID's log entry to Username
@@ -28,9 +41,37 @@ function wipeX_LogUndo( $undoID, $mcConn ) {
 			 SET `undone`='". $GLOBALS['wipeX_User'] ."' 
 			 WHERE `id` = '". $undoID ."'";
 	mysql_query( $sql, $mcConn );
+	rconCommand('pex reload');
 }
 function recurse_Perms ( $group, $key, $mcConn ) {
 	echo "oops";
+}
+
+function rconCommand($commande)
+{
+	if(RCON_IP_SERVEUR !== '' AND RCON_PORT_SERVEUR !== '' AND RCON_PASSWORD !== '')
+	{
+		try
+		{
+			$Rcon = new MinecraftRcon;
+			$Rcon->Connect(RCON_IP_SERVEUR, RCON_PORT_SERVEUR, RCON_PASSWORD, 2);
+			$Data = $Rcon->Command($commande);
+			if( $Data === false )
+			{
+				throw new MinecraftRconException( "Failed to get command result." );
+			}
+			else if( StrLen( $Data ) == 0 )
+			{
+				throw new MinecraftRconException( "Got command result, but it's empty." );
+			}
+			// echo HTMLSpecialChars( $Data );
+		}
+		catch( MinecraftRconException $e )
+		{
+			// echo $e->getMessage( );
+		}		
+		$Rcon->Disconnect( );
+	}
 }
 #####################################################
 # The true script part

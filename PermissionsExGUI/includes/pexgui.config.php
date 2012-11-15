@@ -1,40 +1,54 @@
 <?php
+
 #####################################################
-#	Configuration file for PEX Web Interface
-#		Before using, PLEASE set all the variables
-#		found in the Config Section, or else things will not
-#		work correctly!
+# Configuration file for PEX Web Interface
+# Before using, PLEASE set all the variables
+# found in the Config Section, or else things will not
+# work correctly!
 #
-#	You only need to configure the security section
-#		that you are using!
+# You only need to configure the security section
+# that you are using!
 #
-#		Author: NINJ4
-#
+# Author: NINJ4
+# Contributor: Pirmax
+# Version: 1.0
+# Help: http://pirmax.github.com/PermissionsExGUI/
 #####################################################
-#	Config begin
 
-define("SORT_BY_LADDER",FALSE);						//Change to "TRUE" if you want to sort by rank-ladder and rank in the group list,
-													//	instead of just rank.
+session_start();
 
-	#Security Section:
-define("SECURITY_MODULE", "simple-security");		//Insert the name of one of the security modules here.
-													//The options are: no-security, simple-security, phpbb-standalone, phpbb-embedded
-		#Simple Security Config:
-	define("SIMPLE_PASSWORD", "DEFAULT");			//The password to use for Simple Security module. 
-													//	CHANGE THIS IF USING SIMPLE SECURITY.
-	
-		#PHPBB Standalone Config:
-	define("PHPBB_REL_PATH", "./");					//The directory where phpbb is located, relative to this directory.
-	define("STANDALONE_GROUPS", "4,5" );			//The phpbb groups that are allowed to access WIPEX
-													//	(default is Administrators only)
-	
-													
+# Configuration begin
+define("SORT_BY_LADDER", FALSE);				// Change to "TRUE" if you want to sort by rank-ladder and rank in the group list,
+												// instead of just rank.
 
-	#Connection Section:
-define("MCMYSQL_SERVER", 'localhost');						// Server for database
-define("MCMYSQL_USER", 'minecraft-user');					// Username for database
-define("MCMYSQL_PASS", 'password');						// Password for database
-define("MCMYSQL_DB", 'minecraft-db');						// Database	name
+# Security Section:
+define("SECURITY_MODULE", "login-form");		// Insert the name of one of the security modules here.
+												// The options are: no-security, simple-security, phpbb-standalone, phpbb-embedded, login-form
+
+# Simple Security Config:
+define("SIMPLE_LOGIN", "ADMIN");				// The password to use for Simple Security module. 
+define("SIMPLE_PASSWORD", "PASSWORD");			// The password to use for Simple Security module. 
+												// CHANGE THIS IF USING SIMPLE SECURITY.
+
+# PHPBB Standalone Config:
+define("PHPBB_REL_PATH", "./");					// The directory where phpbb is located, relative to this directory.
+define("STANDALONE_GROUPS", "4,5");				// The phpbb groups that are allowed to access WIPEX
+												// (default is Administrators only)
+
+# Added by Pirmax
+# RCON Option Config:
+define("RCON_IP_SERVEUR", "");					// Serveur IP for RCON (configuration "server.properties" file from the server)
+define("RCON_PORT_SERVEUR", "");				// Serveur PORT for RCON (configuration "server.properties" file from the server)
+define("RCON_PASSWORD", "");					// Serveur PASSWORD for RCON (configuration "server.properties" file from the server)
+												// (Leave blank if you do not want to use the RCON option)
+
+# Connection Section:
+define("MCMYSQL_SERVER", 'localhost');			// Server for database
+define("MCMYSQL_USER", 'minecraft-user');		// Username for database
+define("MCMYSQL_PASS", 'password');				// Password for database
+define("MCMYSQL_DB", 'minecraft-db');			// Database	name
+
+// DO NOT TOUCH BELOW!
 
 #	Config end
 #####################################################
@@ -46,10 +60,6 @@ define( "DOC_ROOT", $_SERVER['DOCUMENT_ROOT'] );
 #####################################################
 #	Common Code:
 		# Functions
-require( "security-modules/". SECURITY_MODULE .".php" );  //security!
-if ( !wipex_check_security() )
-	die( "Security Error." );
-	
 
 function mcConnect() {
 	// Connect
@@ -63,6 +73,7 @@ function mcConnect() {
 		return false;
 	}
 }
+
 function loadGroups( $mcConn ) {
 	# First get all the groups available to us, and assign basic data.
 	$sql 	= "SELECT *
@@ -110,6 +121,7 @@ function loadGroups( $mcConn ) {
 	krsort( $groups_ary );
 	return $groups_ary;
 }
+
 function wipeX_Install( $mcConn = false ) {
 	if ( !$mcConn )
 		die();
