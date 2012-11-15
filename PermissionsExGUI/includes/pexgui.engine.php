@@ -49,12 +49,12 @@ function recurse_Perms ( $group, $key, $mcConn ) {
 
 function rconCommand($commande)
 {
-	if(RCON_IP_SERVEUR !== '' AND RCON_PORT_SERVEUR !== '' AND RCON_PASSWORD !== '')
+	if(RCON_IP_SERVER !== '' AND RCON_PORT_SERVER !== '' AND RCON_PASSWORD !== '')
 	{
 		try
 		{
 			$Rcon = new MinecraftRcon;
-			$Rcon->Connect(RCON_IP_SERVEUR, RCON_PORT_SERVEUR, RCON_PASSWORD, 2);
+			$Rcon->Connect(RCON_IP_SERVER, RCON_PORT_SERVER, RCON_PASSWORD, 2);
 			$Data = $Rcon->Command($commande);
 			if( $Data === false )
 			{

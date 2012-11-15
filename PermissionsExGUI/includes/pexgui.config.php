@@ -37,8 +37,8 @@ define("STANDALONE_GROUPS", "4,5");				// The phpbb groups that are allowed to a
 
 # Added by Pirmax
 # RCON Option Config:
-define("RCON_IP_SERVEUR", "");					// Serveur IP for RCON (configuration "server.properties" file from the server)
-define("RCON_PORT_SERVEUR", "");				// Serveur PORT for RCON (configuration "server.properties" file from the server)
+define("RCON_IP_SERVER", "");					// Serveur IP for RCON (configuration "server.properties" file from the server)
+define("RCON_PORT_SERVER", "");				// Serveur PORT for RCON (configuration "server.properties" file from the server)
 define("RCON_PASSWORD", "");					// Serveur PASSWORD for RCON (configuration "server.properties" file from the server)
 												// (Leave blank if you do not want to use the RCON option)
 
