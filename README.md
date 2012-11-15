@@ -1,21 +1,25 @@
-wipeX2
+PermissionsExGUI
 ======
 
-PermissionsExGUI est une version remastorisée de wipeX. Cette version offre plus d'options pour ses utilisateurs.
+PermissionsExGUI is a version of remastorisée wipeX. This version offers more options for its users.
 
-Il est en cours de réécriture, vous devrez attendre quelques jours avant de voir les nouveautés.
+Features have been added to version PermissionsExGUI to offer additional options and useful as RCON option that allows you to refresh permissions into play when adding valid permissions from the web interface but also a form simple connection to avoid using a URL parameter to connect to.
 
-Suivez mon actualité sur Twitter : http://twitter.com/pirmax
+Follow my news on Twitter: http://twitter.com/pirmax
 
 Installation
 ------------
 
-Coming soon.
+PermissionsExGUI to install, it is very simple, download the ZIP file and unzip it on Github on your computer and then send it to the root of your server.
+
+Please, leave the name of the folder: /PermissionsExGUI/
 
 Configuration
 -------------
 
-Coming soon.
+To configure the plugin, you must edit the file / includes / pexgui.config.php which is located in the folder of the archive you downloaded (ZIP).
+
+Open the file and edit the first lines.
 
 Contribution
 ------------
