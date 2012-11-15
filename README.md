@@ -15,13 +15,14 @@ Features
 * Alerts upon errors: Did you screw something up? No matter, PermissionsExGUI will alert you to the command that failed with a helpful error message!
 * Event Logging: Find out who did what to the permissions database, and undo it!
 * Simple install! Just follow the documented Config section, and move onto your webserver!
-* Monitoring of updates PermissionsExGUI!
 * Tight Security! Four easy to install security modules to keep unwanted wannabe-hackers out of your permissions:
     - No-Security - If you've already password protected the directory!
     - Simple-Security - If you don't need anything fancier!
     - PHPBB-Standalone Security - Only let certain phpbb groups use PermissionsExGUI.
     - PHPBB-Embedded Security - Same as Standalone, but made to be included in a phpbb page.
     - Login-Form - Prefer the security form!
+* Monitoring of updates PermissionsExGUI!
+* Use RCON option for reload permissions ingame `/pex reload`.
 
 Requirements
 ------------
