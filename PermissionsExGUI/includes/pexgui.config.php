@@ -26,8 +26,8 @@ define("SECURITY_MODULE", "login-form");		// Insert the name of one of the secur
 												// The options are: no-security, simple-security, phpbb-standalone, phpbb-embedded, login-form
 
 # Simple Security Config:
-define("SIMPLE_LOGIN", "ADMIN");				// The password to use for Simple Security module. 
-define("SIMPLE_PASSWORD", "PASSWORD");			// The password to use for Simple Security module. 
+define("SIMPLE_LOGIN", "ADMIN");				// The ID to use for login-form module. 
+define("SIMPLE_PASSWORD", "PASSWORD");			// The password to use for Simple Security or login-form module. 
 												// CHANGE THIS IF USING SIMPLE SECURITY.
 
 # PHPBB Standalone Config:
